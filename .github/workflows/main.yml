@@ -293,6 +293,9 @@ jobs:
             echo "modules_arg=$modules_arg" >> $GITHUB_OUTPUT
           fi
           echo "::endgroup::"
+      - name: remove-duplicate-boards
+        run: |
+          find "${GITHUB_WORKSPACE}/zmk" -path "*/mechwild/pillbug/board.yml" -delete || true
       - name: cache
         if: true
         uses: actions/cache@v4
